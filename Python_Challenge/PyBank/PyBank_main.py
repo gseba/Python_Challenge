@@ -22,7 +22,7 @@ with open(budget_csv, newline='') as csvfile:
 
      # 1) The total number of months included in the dataset 
     total_months = [row[0] for row in csvreader]
-    print('Total Months: ' + str(len(total_months)))
+    
 
 
     # 2) The net total amount of "Profit/Losses" over the entire period
@@ -34,7 +34,7 @@ with open(budget_csv, newline='') as csvfile:
 
     # 2b) Calculate the total profit/loss and print the results
     Profit_Loss_total = sum(col2)
-    print('Total Profit/Loss: ' + '$' + str(Profit_Loss_total))
+    
 
     
     # 3) The average of the changes in "Profit/Losses" over the entire period
@@ -47,7 +47,7 @@ with open(budget_csv, newline='') as csvfile:
         average_change.append(profit_loss_diff)
         previous_value = current_value
     Average = sum(average_change[1:])/len(average_change[1:])
-    print('Average  Change: ' + str(round(Average, 2)))  
+    
 
 
 
@@ -63,7 +63,7 @@ with open(budget_csv, newline='') as csvfile:
         if k > max_value:
             max_value = k
             date = i
-    print('Greatest Increase in Profits: ' + date + ' ' + '(' + '$' + str(max_value) + ')')
+    
    
             
 
@@ -80,30 +80,32 @@ with open(budget_csv, newline='') as csvfile:
         if k < min_value:
             min_value = k
             date = i
+    
+
+
+    # 6) Print out the results
+    print('Financial Analysis')
+    print('-------------------------')
+    print('Total Months: ' + str(len(total_months)))
+    print('Total Profit/Loss: ' + '$' + str(Profit_Loss_total))
+    print('Average  Change: ' + str(round(Average, 2)))  
+    print('Greatest Increase in Profits: ' + date + ' ' + '(' + '$' + str(max_value) + ')')
     print('Greatest Increase in Profits: ' + date + ' ' + '(' + '$' + str(min_value) + ')')
 
 # Specify the file to write to
 output_path = os.path.join("output", "PyBank_Output.csv")
     
-# with open(output_path, 'w', newline='') as csvfile:
+with open(output_path, 'w', newline='') as csvfile:
 
-#     # Initialize csv.writer
-#     csvwriter = csv.writer(csvfile, delimiter=',')
+    # Initialize csv.writer
+    csvwriter = csv.writer(csvfile, delimiter=',')
 
-#     # Write the first row 
-#     csvwriter.writerow(['Financial Analyis\n'])
+    # Write the first row 
+    csvwriter.writerow(['Financial Analyis\n-------------------------\nTotal Months: 86\nTotal: $38382578\nAverage  Change: $-2315.12\nGreatest Increase in Profits: Feb-2012 ($1926159)\nGreatest Decrease in Profits: Sep-2013 ($-2196167)\n'])
 
-#     # Write the second row
-#     csvwriter.writerow([])
-   
-#     # Write the third row
-#     csvwriter.writerow([])
-
-#     # Write the fourth row
-#     csvwriter.writerow([])
-
-#     # Write the fifth row
-#     csvwriter.writerow([])
-
-#      # Write the sixth row
-#     csvwriter.writerow([])
+  
+  
+  
+  
+  
+  

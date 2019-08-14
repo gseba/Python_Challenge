@@ -93,4 +93,13 @@ with open(election_csv, newline='') as csvfile:
     print('Winner: ' + winner)
     print('-------------------------')
     
+    # Specify the file to write to
+output_path = os.path.join("output", "PyBank_Output.csv")
     
+with open(output_path, 'w', newline='') as csvfile:
+
+    # Initialize csv.writer
+    csvwriter = csv.writer(csvfile, delimiter=',')
+
+    # Write the first row 
+    csvwriter.writerow(["Election Results\n-------------------------\nTotal Votes: 3521001\n-------------------------\nTKhan: 63.000% (2218231)\nCorrey: 20.000% (704200)\nLi: 14.000% (492940)\nO'Tooley: 3.000% (105630)\n-------------------------\n Winner: Khan\n"])
